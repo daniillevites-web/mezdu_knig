@@ -16,10 +16,7 @@ dialog{background:var(--paper);color:var(--ink);border:0;padding:0;max-width:120
 @media(max-width:370px){.header nav{gap:12px}.hero-bottom{grid-template-columns:1fr}.hero-bottom .start-link{max-width:210px}.origin-heading h2{font-size:3.5rem}.local-number{font-size:5.5rem}.author-list{grid-template-columns:1fr}.route-nav{grid-template-columns:1fr}.catalogue-address{flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}.scene-image{transform:none}.art-card:hover img{transform:none}}
 
-/* The original artwork moves gently against a white background. */
-.turning-page{background:#fff;color:var(--ink)}
-.turning-page .start-link{border-color:var(--line)}
-.turning-page .start-link:hover .circle-arrow{background:var(--red);color:white;border-color:var(--red)}
+/* The original artwork moves gently against the red section background. */
 .turning-art{transform:none}
 .turning-art img{animation:tara-art-float 6s ease-in-out infinite;animation-play-state:paused;filter:drop-shadow(8px 18px 14px #14141424)}
 .turning-art.art-in-view img{animation-play-state:running}
