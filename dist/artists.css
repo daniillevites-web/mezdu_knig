@@ -1,0 +1,55 @@
+.artists { scroll-margin-top: calc(var(--header) + 20px); }
+.artists .section-heading-side { max-width: 360px; }
+.artist-roster { margin-top: 42px; padding: 32px 36px 24px; background: var(--ink); color: var(--paper); }
+.roster-heading { display: flex; justify-content: space-between; gap: 24px; align-items: baseline; margin-bottom: 26px; }
+.roster-heading h3, .artworks-heading h3 { font-size: 1.25rem; letter-spacing: -.02em; line-height: 1.35; }
+.roster-heading > span { color: #b7b7b3; font: .875rem/1.4 'Courier New', monospace; }
+.artist-roster .author-list { gap: 0 28px; padding: 0; }
+.artist-roster .author-list button { display: flex; align-items: baseline; gap: 10px; min-height: 66px; padding: 18px 0; border-color: #454542; font-size: 1rem; line-height: 1.4; transition: color .2s; }
+.author-number { flex: none; color: #b7b7b3; font: .75rem/1.6 'Courier New', monospace; }
+.author-open { margin-left: auto; color: #ff5964; font-size: 1.15rem; }
+.artist-roster .author-list button:hover { color: #ff5964; }
+.artist-roster .author-list button:focus-visible { outline-color: #ff5964; outline-offset: 2px; }
+.roster-note { max-width: none; margin-top: 24px; padding-top: 20px; border-top: 1px solid #454542; color: #b7b7b3; font-size: .875rem; line-height: 1.65; }
+.roster-note a { color: var(--paper); text-decoration: underline; text-underline-offset: 4px; }
+.roster-note a:hover { color: #ff5964; }
+.artworks-heading { display: flex; justify-content: space-between; gap: 24px; align-items: center; margin-top: 42px; }
+.artworks-heading p { color: var(--muted); font-size: .875rem; margin-top: 8px; }
+.artworks-heading .gallery-controls { margin: 0; flex: none; }
+.artists .art-gallery { padding-top: 22px; }
+@media(max-width:1050px) {
+  .artist-roster { padding: 28px; }
+  .artist-roster .author-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media(max-width:760px) {
+  .artists .section-heading-side { max-width: none; align-items: flex-start; }
+  .artists .gallery-controls { flex: none; }
+  .artist-roster { padding: 24px 20px 22px; margin-top: 30px; }
+  .roster-heading { display: block; margin-bottom: 22px; }
+  .roster-heading > span { display: block; margin-top: 10px; }
+  .artist-roster .author-list { column-gap: 22px; }
+  .artist-roster .author-list button { font-size: .9375rem; gap: 7px; }
+  .header nav { gap: clamp(10px, 3vw, 19px); }
+}
+@media(max-width:440px) {
+  .artist-roster .author-list { grid-template-columns: 1fr; }
+  .artist-roster .author-list button { min-height: 54px; padding: 14px 0; }
+  .header { gap: 12px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .artist-roster .author-list button { transition: none; }
+}
+
+.portrait-gallery{margin-top:38px}
+.portrait-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:26px}
+.portrait-heading>p{font-size:1rem;color:var(--muted)}
+.portrait-controls{display:flex;align-items:center;gap:16px;flex:none}
+#portrait-position{min-width:70px;text-align:center;font:.875rem 'Courier New',monospace;color:var(--muted)}
+.portrait-track{display:flex;gap:clamp(24px,4vw,64px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-color:var(--red) var(--line);scrollbar-width:thin;padding:8px 6px 28px;overscroll-behavior-x:contain}
+.portrait-slide{flex:0 0 calc((100% - 8vw)/3);min-width:220px;scroll-snap-align:start;margin:0}
+.portrait-frame{position:relative;aspect-ratio:1;overflow:hidden;border-radius:50%;background:white}
+.portrait-frame img{position:absolute;max-width:none;width:var(--portrait-width);height:var(--portrait-height);left:var(--portrait-left);top:var(--portrait-top)}
+.portrait-slide figcaption{margin-top:22px;font-size:clamp(1.125rem,1.65vw,1.6rem);line-height:1.3;letter-spacing:-.02em}
+@media(max-width:1050px){.portrait-slide{flex-basis:calc((100% - 4vw)/2)}}
+@media(max-width:760px){.portrait-heading{align-items:flex-start}.portrait-heading>p{font-size:.875rem;max-width:130px}.portrait-controls{gap:8px}.portrait-track{gap:24px}.portrait-slide{flex-basis:82%;min-width:0}.portrait-slide figcaption{font-size:1.25rem}}
+@media(max-width:360px){.portrait-heading{flex-wrap:wrap}.portrait-heading>p{max-width:none}}

@@ -1,0 +1,48 @@
+/* City illustrations sit behind the exhibition photographs. */
+.journey-road{display:block;padding:110px var(--gutter) 90px;overflow:clip}
+.journey-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:46px}
+.journey-heading h2{font-size:clamp(3.5rem,6.5vw,7rem);margin-top:26px}
+.journey-heading-note{max-width:320px}.journey-heading-note p{font-size:1.125rem;line-height:1.6;color:var(--muted);margin-top:16px}
+.journey-year{font-size:clamp(3rem,5vw,6rem);letter-spacing:-.07em;line-height:1;color:var(--red)}
+.journey-road .route-nav{display:flex;flex-direction:row;flex-wrap:wrap;gap:14px 32px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:0 0 70px}
+.journey-road .route-nav>a{gap:10px;font-size:.9375rem;min-height:42px}.journey-road .route-nav>a>span{width:30px;height:30px}
+.journey-road .city-chapters{position:relative;isolation:isolate}
+.journey-road .city{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(70px,10vw,170px);position:relative;align-items:start;border:0;margin:0;padding:0 0 170px;min-width:0}
+.journey-road .city:last-child{padding-bottom:25px}
+.city-visual{position:relative;grid-column:1;grid-row:1;padding-top:36px;min-width:0;z-index:1}
+.city-content{position:relative;grid-column:2;grid-row:1;padding-top:36px;min-width:0;z-index:1;background:var(--paper)}
+.journey-road .city:nth-of-type(even) .city-visual{grid-column:2}.journey-road .city:nth-of-type(even) .city-content{grid-column:1}
+.city-stop{display:inline-grid;place-items:center;width:38px;height:38px;margin-bottom:18px;border:1px solid var(--red);border-radius:50%;font:.875rem 'Courier New',monospace;background:var(--paper);color:var(--red);transition:background .8s,color .8s}
+.city.route-reached .city-stop{background:var(--red);color:white}
+.city-map-heading{position:relative;padding:0 0 10px;z-index:2}
+.map-period{font:.875rem/1.4 'Courier New',monospace;color:var(--muted)}
+.journey-road .city-map-heading h3{margin:13px 0 0;font-size:clamp(2.4rem,4.25vw,5rem);letter-spacing:-.055em;overflow-wrap:normal}
+.city-stage{position:relative;isolation:isolate;padding:100px 6% 100px;margin:4px -18px 0}
+.city-contour{position:absolute;inset:0;left:-10%;width:120%;height:100%;color:var(--ink);opacity:.44;z-index:0;pointer-events:none;user-select:none;overflow:visible}
+.city-contour *{pointer-events:none}
+.contours-animated .city-contour path{stroke-dasharray:1;stroke-dashoffset:1}
+.contours-animated .contour-started .city-contour path{animation:draw-city var(--ink-duration) linear var(--ink-delay) forwards}
+@keyframes draw-city{to{stroke-dashoffset:0}}
+.city-photo-window{position:relative;z-index:2;background:var(--paper);box-shadow:0 8px 24px #14141414;transition:box-shadow .9s cubic-bezier(.2,.65,.2,1)}
+.city-photo-window::after{content:'';position:absolute;inset:-1px;pointer-events:none;border:1px solid var(--red);box-shadow:0 0 16px #e5091952,0 0 42px #e5091924;opacity:0;transition:opacity .9s cubic-bezier(.2,.65,.2,1)}
+.route-reached .city-photo-window::after{opacity:1}
+.journey-road .city-gallery{margin:0}.journey-road .city-image{cursor:zoom-in}
+.journey-road .city-image img{aspect-ratio:1.25;object-fit:contain;background:#e9e9e3;transition:opacity .45s}
+.journey-road .city-image:hover img{transform:none}
+.journey-road .photo-nav{padding:0 12px;background:var(--paper)}
+.map-venue{padding:8px 0 24px;border-bottom:1px solid var(--line);font-size:.9375rem;line-height:1.5;max-width:none}
+.photo-credit{font-size:.875rem;color:var(--muted);padding-bottom:12px}.photo-credit a{text-decoration:underline;text-underline-offset:3px}
+.journey-road .city-content>h3{margin:28px 0 24px;font-size:clamp(2rem,3vw,3.7rem)}
+.journey-road .city-content>p:not(.city-place){font-size:1.0625rem;line-height:1.65;margin-top:26px}
+.journey-road .city-content>.aside-note{font-size:.875rem!important;color:var(--muted)}
+.journey-road .city-meta{font-size:.875rem;gap:14px;flex-wrap:wrap}
+.journey-road .local-number{font-size:clamp(5rem,8.5vw,8.5rem)}
+.journey-ribbon{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:visible}
+.journey-ribbon path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ribbon-track,.ribbon-head{display:none}.ribbon-progress{stroke:var(--red);stroke-width:5px;opacity:.68}.ribbon-glow{stroke:var(--red);stroke-width:17px;opacity:.22;filter:blur(6px)}
+@media(max-width:1050px){.journey-road .city{column-gap:60px}.journey-road .city-map-heading h3{font-size:2.6rem}.journey-road .local-number{flex-wrap:wrap}.journey-road .route-nav{gap:8px 22px}.city-stage{padding-top:80px;padding-bottom:80px}}
+@media(max-width:760px){
+ .journey-road{padding-top:70px;padding-bottom:60px}.journey-heading{display:block;margin-bottom:28px}.journey-heading h2{font-size:3.4rem}.journey-heading-note{max-width:none;margin-top:30px;display:flex;align-items:center;gap:24px}.journey-year{font-size:3.5rem}.journey-heading-note p{font-size:.9375rem;margin:0}.journey-road .route-nav{gap:4px 18px;margin-bottom:45px;padding:15px 0}.journey-road .route-nav>a{font-size:.875rem}
+ .journey-road .city{display:flex;flex-direction:column;gap:26px;padding-left:34px;padding-bottom:90px}.journey-road .city:last-child{padding-bottom:0}.city-visual,.city-content{width:100%;padding-top:0}.city-content{padding:0}.city-stop{position:absolute;top:4px;left:-34px;width:25px;height:25px;font-size:.75rem}.city-map-heading{padding:0 0 10px}.journey-road .city-map-heading h3{font-size:clamp(1.9rem,7vw,3rem);line-height:1.08;margin-top:10px}.map-period{font-size:.875rem}.city-stage{padding:65px 4% 65px;margin:0 -8px}.city-contour{left:-6%;width:112%;opacity:.45}.map-venue{font-size:.875rem;padding:8px 0 20px}.journey-road .city-content>h3{font-size:2.2rem}.journey-road .city-content>p:not(.city-place){font-size:1rem}.journey-road .local-number{font-size:5.8rem}.journey-road .local-artists{padding:22px}.journey-road .yakutsk-dates>div{grid-template-columns:1fr}.journey-road .yakutsk-dates span br{display:none}.ribbon-progress{stroke-width:3px}.ribbon-glow{stroke-width:11px;filter:blur(4px)}
+}
+@media(prefers-reduced-motion:reduce){.city-stop,.city-photo-window,.city-photo-window::after{transition:none}.contours-animated .city-contour path{animation:none!important;stroke-dashoffset:0}}
