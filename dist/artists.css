@@ -2,7 +2,7 @@
 .artists .section-heading-side { max-width: 360px; }
 .artist-roster { margin-top: 42px; padding: 32px 36px 24px; background: var(--ink); color: var(--paper); }
 .roster-heading { display: flex; justify-content: space-between; gap: 24px; align-items: baseline; margin-bottom: 26px; }
-.roster-heading h3, .artworks-heading h3 { font-size: 1.25rem; letter-spacing: -.02em; line-height: 1.35; }
+.roster-heading h3 { font-size: 1.25rem; letter-spacing: -.02em; line-height: 1.35; }
 .roster-heading > span { color: #b7b7b3; font: .875rem/1.4 'Courier New', monospace; }
 .artist-roster .author-list { gap: 0 28px; padding: 0; }
 .artist-roster .author-list button { display: flex; align-items: baseline; gap: 10px; min-height: 66px; padding: 18px 0; border-color: #454542; font-size: 1rem; line-height: 1.4; transition: color .2s; }
@@ -13,10 +13,6 @@
 .roster-note { max-width: none; margin-top: 24px; padding-top: 20px; border-top: 1px solid #454542; color: #b7b7b3; font-size: .875rem; line-height: 1.65; }
 .roster-note a { color: var(--paper); text-decoration: underline; text-underline-offset: 4px; }
 .roster-note a:hover { color: #ff5964; }
-.artworks-heading { display: flex; justify-content: space-between; gap: 24px; align-items: center; margin-top: 42px; }
-.artworks-heading p { color: var(--muted); font-size: .875rem; margin-top: 8px; }
-.artworks-heading .gallery-controls { margin: 0; flex: none; }
-.artists .art-gallery { padding-top: 22px; }
 @media(max-width:1050px) {
   .artist-roster { padding: 28px; }
   .artist-roster .author-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -46,10 +42,17 @@
 .portrait-controls{display:flex;align-items:center;gap:16px;flex:none}
 #portrait-position{min-width:70px;text-align:center;font:.875rem 'Courier New',monospace;color:var(--muted)}
 .portrait-track{display:flex;gap:clamp(24px,4vw,64px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-color:var(--red) var(--line);scrollbar-width:thin;padding:8px 6px 28px;overscroll-behavior-x:contain}
-.portrait-slide{flex:0 0 calc((100% - 8vw)/3);min-width:220px;scroll-snap-align:start;margin:0}
-.portrait-frame{position:relative;aspect-ratio:1;overflow:hidden;border-radius:50%;background:white}
+.portrait-slide{flex:0 0 180px;min-width:0;scroll-snap-align:start;margin:0}
+.portrait-frame{display:block;width:100%;padding:0;position:relative;aspect-ratio:1;overflow:hidden;border-radius:50%;background:white}
 .portrait-frame img{position:absolute;max-width:none;width:var(--portrait-width);height:var(--portrait-height);left:var(--portrait-left);top:var(--portrait-top)}
-.portrait-slide figcaption{margin-top:22px;font-size:clamp(1.125rem,1.65vw,1.6rem);line-height:1.3;letter-spacing:-.02em}
-@media(max-width:1050px){.portrait-slide{flex-basis:calc((100% - 4vw)/2)}}
-@media(max-width:760px){.portrait-heading{align-items:flex-start}.portrait-heading>p{font-size:.875rem;max-width:130px}.portrait-controls{gap:8px}.portrait-track{gap:24px}.portrait-slide{flex-basis:82%;min-width:0}.portrait-slide figcaption{font-size:1.25rem}}
+.portrait-slide figcaption{margin-top:14px;font-size:1rem;line-height:1.3;letter-spacing:-.02em}
+
+@media(max-width:760px){.portrait-heading{align-items:flex-start}.portrait-heading>p{font-size:.875rem;max-width:130px}.portrait-controls{gap:8px}.portrait-track{gap:24px}.portrait-slide{flex-basis:140px}.portrait-slide figcaption{font-size:.9375rem}}
 @media(max-width:360px){.portrait-heading{flex-wrap:wrap}.portrait-heading>p{max-width:none}}
+
+.portrait-frame:hover{box-shadow:0 0 0 3px var(--red)}
+.portrait-frame:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.portrait-art-preview{position:fixed;z-index:110;width:min(240px,calc(100vw - 24px));padding:14px;background:var(--paper);color:var(--ink);border:1px solid var(--line);box-shadow:0 12px 36px #0003;pointer-events:none}
+.portrait-art-preview[hidden]{display:none}
+.portrait-art-preview img{width:100%;height:200px;object-fit:contain}
+.portrait-art-preview p{margin-top:10px;font-size:.875rem;line-height:1.4}
