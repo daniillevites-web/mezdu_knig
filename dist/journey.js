@@ -31,12 +31,12 @@
     svg.setAttribute('viewBox', `0 0 ${box.width} ${box.height}`);
     const first = points[0], last = points.at(-1);
     const routePoints = mobile ? points.flatMap((p, i) => i ? [{x: 12, y: (points[i - 1].y + p.y) / 2}, p] : [p]) : points;
-    let d = `M ${first.x} ${Math.max(0, first.y - 180)} C ${first.x} ${first.y - 100} ${first.x} ${first.y - 60} ${first.x} ${first.y}`;
+    let d = `M ${first.x} -180 C ${first.x} ${first.y - 100} ${first.x} ${first.y - 60} ${first.x} ${first.y}`;
     for (let i = 1; i < routePoints.length; i++) {
       const a = routePoints[i - 1], b = routePoints[i], dy = b.y - a.y;
       d += ` C ${a.x} ${a.y + dy * .48} ${b.x} ${b.y - dy * .48} ${b.x} ${b.y}`;
     }
-    const end = Math.min(box.height - 8, last.y + 220);
+    const end = box.height + 180;
     d += ` C ${last.x} ${last.y + (end - last.y) * .4} ${last.x} ${end - 30} ${last.x} ${end}`;
     const fraction = total ? shown / total : 0;
     path.setAttribute('d', d); glow.setAttribute('d', d);
@@ -87,7 +87,7 @@
         observer.unobserve(entry.target);
       });
     }, {threshold: .08, rootMargin: '0px 0px -12% 0px'});
-    rows.filter(r => !r.classList.contains('contour-started')).forEach(r => observer.observe($('.city-stage', r)));
+    rows.filter(r => !r.classList.contains('contour-started')).forEach(r => observer.observe($('.city-contour', r)));
   }
   reduce.addEventListener('change', () => { setupContours(); scheduleDraw(); });
   setupContours(); rebuildRoad();
