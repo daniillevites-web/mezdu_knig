@@ -24,3 +24,15 @@ dialog{background:var(--paper);color:var(--ink);border:0;padding:0;max-width:120
 p,figcaption{ text-wrap:pretty }
 h1,h2,h3{ text-wrap:balance }
 @media(prefers-reduced-motion:reduce){.turning-art img{animation:none;transform:none}}
+
+/* Photographs from the first exhibition in RGBM. */
+.rgbm-gallery{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+.rgbm-gallery h3{font-size:clamp(1.5rem,2vw,2rem);margin-bottom:22px;line-height:1.2;letter-spacing:-.035em}
+.rgbm-photo{position:relative;display:block;width:100%;padding:0;background:#e7e7e2;cursor:zoom-in;touch-action:pan-y}
+.rgbm-photo img{width:100%;height:auto;aspect-ratio:3/2;object-fit:contain}
+.rgbm-photo>span{position:absolute;right:12px;bottom:12px;background:var(--paper);padding:6px 12px;font-size:.8125rem}
+#rgbm-caption{margin-top:16px;font-size:.9375rem;line-height:1.5;min-height:4.5em;color:var(--muted)}
+.rgbm-controls{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+#rgbm-position{font:.875rem 'Courier New',monospace;color:var(--muted)}
+.rgbm-credit{font-size:.8125rem;color:var(--muted);margin-top:18px}
+@media(max-width:760px){.rgbm-gallery{margin-top:30px}#rgbm-caption{font-size:.875rem}.rgbm-photo>span{right:8px;bottom:8px}}
