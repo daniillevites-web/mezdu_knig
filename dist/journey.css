@@ -49,3 +49,24 @@
  .journey-road .city{display:flex;flex-direction:column;gap:26px;padding-left:34px;padding-bottom:280px}.journey-road .city:last-child{padding-bottom:260px}.city-visual,.city-content{width:100%;padding-top:0}.city-content{padding:0}.city-stop{position:absolute;top:4px;left:-34px;width:25px;height:25px;font-size:.75rem}.city-map-heading{padding:0 0 10px}.journey-road .city-map-heading h3{font-size:clamp(1.9rem,7vw,3rem);line-height:1.08;margin-top:10px}.map-period{font-size:.875rem}.city-stage{padding:20px 4% 24px;margin:0 -8px}.city-contour{left:-20%;width:140%;height:340px;bottom:-25px;opacity:.4;filter:blur(4px)}.map-venue{font-size:.875rem;padding:8px 0 20px}.journey-road .city-content>h3{font-size:2.2rem}.journey-road .city-content>p:not(.city-place){font-size:1rem}.journey-road .local-number{font-size:5.8rem}.journey-road .local-artists{padding:22px}.journey-road .yakutsk-dates>div{grid-template-columns:1fr}.journey-road .yakutsk-dates span br{display:none}.ribbon-progress{stroke-width:3px}.ribbon-glow{stroke-width:11px;filter:blur(4px)}
 }
 @media(prefers-reduced-motion:reduce){.city-stop,.city-photo-window,.city-photo-window::after{transition:none}.contours-animated .city-contour path{animation:none!important;stroke-dashoffset:0}}
+
+/* Compact chapters retain room for the original line illustrations. */
+.journey-road .city{padding-bottom:150px}
+.journey-road .city:last-child{padding-bottom:90px}
+.city-contour{height:clamp(200px,25vw,340px);bottom:15px;opacity:.2;filter:blur(2px)}
+.journey-road .city-image{cursor:zoom-in}
+.journey-road .city-image img{height:clamp(260px,34vw,470px);aspect-ratio:auto;object-fit:contain}
+.journey-road .city-gallery>[data-gallery-prev],.journey-road .city-gallery>[data-gallery-next]{top:clamp(130px,17vw,235px)}
+.gallery-counter{display:block;margin:16px 0 8px;font:.875rem/1.4 'Courier New',monospace;color:var(--red)}
+.gallery-caption{font-size:.875rem;line-height:1.5;color:var(--muted);min-height:3em}
+.exhibition-composition{display:grid;gap:18px;margin-bottom:26px}
+.exhibition-composition p{display:flex;align-items:center;gap:18px;font-size:1rem;line-height:1.4}
+.exhibition-composition strong{font-size:3.5rem;line-height:1;letter-spacing:-.06em;color:#ff5964;font-weight:400;min-width:2ch}
+@media(max-width:760px){
+ .journey-road .city{padding-bottom:100px;gap:20px}
+ .journey-road .city:last-child{padding-bottom:30px}
+ .city-contour{height:200px;bottom:0;opacity:.15}
+ .journey-road .city-image img{height:320px;max-height:48svh}
+ .journey-road .city-gallery>[data-gallery-prev],.journey-road .city-gallery>[data-gallery-next]{top:min(160px,24svh)}
+ .journey-road .city-content>h3{margin-top:10px}
+}
