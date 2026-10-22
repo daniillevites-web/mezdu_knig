@@ -22,7 +22,7 @@
   }
   function showPreview(button) {
     const artist = window.ARTISTS.find(a => a.id === Number(button.dataset.art));
-    if (!artist || document.querySelector('dialog[open]')) return;
+    if (!artist) return;
     hidePreview();
     activePortrait = button;
     image.src = artist.image;
@@ -71,10 +71,8 @@
   const step = () => slides[1].offsetLeft - slides[0].offsetLeft;
   function update() {
     scheduled = false;
-    const bounds = track.getBoundingClientRect();
-    const visible = slides.map((slide, i) => ({i, rect: slide.getBoundingClientRect()})).filter(({rect}) => rect.right > bounds.left + 8 && rect.left < bounds.right - 8);
-    const first = visible[0]?.i ?? 0, last = visible.at(-1)?.i ?? first;
-    position.textContent = String(first + 1).padStart(2, '0') + (last > first ? '–' + String(last + 1).padStart(2, '0') : '') + ' / ' + slides.length;
+    const i = Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / step())));
+    position.textContent = String(i + 1).padStart(2, '0') + ' / ' + slides.length;
     prev.disabled = track.scrollLeft <= 2;
     next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
   }
@@ -87,19 +85,9 @@
     if (!scheduled) { scheduled = true; requestAnimationFrame(update); }
   }, {passive: true});
   track.addEventListener('keydown', e => {
-    const keys = ['ArrowLeft', 'ArrowRight', 'Home', 'End'];
-    if (!keys.includes(e.key)) return;
-    e.preventDefault();
-    const current = slides.findIndex(slide => slide.contains(document.activeElement));
-    if (current < 0 && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
-      move(e.key === 'ArrowRight' ? 1 : -1); return;
-    }
-    const target = e.key === 'Home' ? 0 : e.key === 'End' ? slides.length - 1 : Math.max(0, Math.min(slides.length - 1, current + (e.key === 'ArrowRight' ? 1 : -1)));
-    const button = slides[target].querySelector('.portrait-frame');
-    button.focus({preventScroll: true});
-    button.scrollIntoView({block: 'nearest', inline: 'nearest', behavior: reduce.matches ? 'auto' : 'smooth'});
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); move(e.key === 'ArrowRight' ? 1 : -1); }
+    if (e.key === 'Home' || e.key === 'End') { e.preventDefault(); track.scrollTo({left: e.key === 'Home' ? 0 : track.scrollWidth, behavior: reduce.matches ? 'auto' : 'smooth'}); }
   });
-  document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('toggle', () => { if (dialog.open) hidePreview(); }));
   addEventListener('resize', () => { hidePreview(); update(); }, {passive: true});
   update();
 })();
