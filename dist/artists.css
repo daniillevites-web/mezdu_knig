@@ -3,10 +3,10 @@
 .artist-roster { margin-top: 42px; padding: 32px 36px 24px; background: var(--ink); color: var(--paper); }
 .roster-heading { display: flex; justify-content: space-between; gap: 24px; align-items: baseline; margin-bottom: 26px; }
 .roster-heading h3 { font-size: 1.25rem; letter-spacing: -.02em; line-height: 1.35; }
-.roster-heading > span { color: #b7b7b3; font: .875rem/1.4 'Courier New', monospace; }
+.roster-heading > span { color: #b7b7b3; font:italic 400 .875rem/1.4 var(--font-block); }
 .artist-roster .author-list { gap: 0 28px; padding: 0; }
 .artist-roster .author-list button { display: flex; align-items: baseline; gap: 10px; min-height: 66px; padding: 18px 0; border-color: #454542; font-size: 1rem; line-height: 1.4; transition: color .2s; }
-.author-number { flex: none; color: #b7b7b3; font: .75rem/1.6 'Courier New', monospace; }
+.author-number { flex: none; color: #b7b7b3; font:italic 400 .75rem/1.6 var(--font-block); }
 .author-open { margin-left: auto; color: #ff5964; font-size: 1.15rem; }
 .artist-roster .author-list button:hover { color: #ff5964; }
 .artist-roster .author-list button:focus-visible { outline-color: #ff5964; outline-offset: 2px; }
@@ -40,7 +40,7 @@
 .portrait-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:26px}
 .portrait-heading>p{font-size:1rem;color:var(--muted)}
 .portrait-controls{display:flex;align-items:center;gap:16px;flex:none}
-#portrait-position{min-width:70px;text-align:center;font:.875rem 'Courier New',monospace;color:var(--muted)}
+#portrait-position{min-width:70px;text-align:center;font:italic 400 .875rem var(--font-block);color:var(--muted)}
 .portrait-track{display:flex;gap:clamp(24px,4vw,64px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-color:var(--red) var(--line);scrollbar-width:thin;padding:8px 6px 28px;overscroll-behavior-x:contain}
 .portrait-slide{flex:0 0 180px;min-width:0;scroll-snap-align:start;margin:0}
 .portrait-frame{display:block;width:100%;padding:0;position:relative;aspect-ratio:1;overflow:hidden;border-radius:50%;background:white}
