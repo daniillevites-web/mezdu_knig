@@ -34,3 +34,30 @@
  .outro{padding:34px var(--gutter)}
 }
 @media(prefers-reduced-motion:reduce){.draw-word path{animation:none!important;stroke-dashoffset:0!important;fill-opacity:1!important}}
+/* Sequential letter outlines, with each glyph completing before the next. */
+.draw-pending .draw-word path{fill:transparent;fill-opacity:1;stroke-width:28}
+.draw-started .draw-word path{animation:trace-glyph var(--letter-time) linear var(--letter-start) both}
+@keyframes trace-glyph{0%{stroke-dashoffset:1;fill:transparent}99%{fill:transparent}100%{stroke-dashoffset:0;fill:currentColor}}
+.header nav{margin-left:auto}
+.opening-date{margin-top:28px}
+.opening-date h2{margin-bottom:12px}
+.opening-date>p{font-size:1rem;max-width:30ch}
+.rgbm-photo{cursor:default;touch-action:pan-y}
+.city-place{position:relative;isolation:isolate;display:inline-block;padding:18px 22px;font-family:var(--font-text);font-weight:700;line-height:1.5}
+.city-place::before{content:'';position:absolute;inset:0;background:#e8e8e1;z-index:-1;transform-origin:left;transform:scaleX(1)}
+.city-place>span{color:var(--ink)}
+.city-place.place-pending::before{transform:scaleX(0)}
+.city-place.place-pending.place-revealed::before{animation:reveal-place .75s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes reveal-place{to{transform:scaleX(1)}}
+.journey-ribbon{mask-image:linear-gradient(to bottom,transparent,#000 100px,#000 calc(100% - 460px),transparent calc(100% - 30px));-webkit-mask-image:linear-gradient(to bottom,transparent,#000 100px,#000 calc(100% - 460px),transparent calc(100% - 30px))}
+.outro{display:flex;align-items:center;justify-content:center;gap:30px}
+.outro>p{position:relative;z-index:1;flex:0 1 auto}
+.outro::after{content:'';position:static;display:block;flex:0 0 clamp(60px,7vw,110px);width:clamp(60px,7vw,110px);aspect-ratio:1;transform:none;border-radius:50%;background:var(--red);opacity:1}
+@media(max-width:760px){.outro{gap:20px}.outro>p{font-size:clamp(1.15rem,4.5vw,1.65rem)!important}.outro::after{flex-basis:54px;width:54px}.city-place{padding:14px 16px}}
+@media(prefers-reduced-motion:reduce){.draw-word path{fill:currentColor!important;stroke-dashoffset:0!important}.city-place::before{animation:none!important;transform:scaleX(1)!important}}
+.origin-building{margin:26px -5% 40px;color:var(--ink);opacity:.48;filter:blur(2px);pointer-events:none}
+.origin-contour{display:block;width:100%;height:auto;overflow:visible}
+.building-pending .origin-contour path{stroke-dasharray:1;stroke-dashoffset:1}
+.building-pending.building-started .origin-contour path{animation:draw-city var(--ink-duration) linear var(--ink-delay) forwards}
+@media(prefers-reduced-motion:reduce){.origin-contour path{animation:none!important;stroke-dashoffset:0!important}}
+@media(max-width:370px){.header{gap:8px}.header nav{gap:6px}}
