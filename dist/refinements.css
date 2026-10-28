@@ -163,3 +163,10 @@ main{overflow:clip}
 .work-outline{opacity:1;filter:brightness(0)}
 @media(max-width:1050px){.concept .concept-title,.concept-copy>.prose-columns{width:100%}}
 @media(max-width:760px){.library-curators{grid-template-columns:1fr}.library-curators .curator-board{gap:18px}}
+/* One line of works and a shared quarter-screen alignment for the concept. */
+.creators-disclosure>summary{min-height:calc((2 * clamp(70px,8vw,130px) + 25px + var(--creator-summary)) / 6)}
+.concept-copy{margin-left:calc(25vw - var(--gutter));width:calc(100% - 25vw + var(--gutter));min-width:0}
+.concept .concept-title,.concept-copy>.prose-columns{width:100%;margin-left:0}
+.library-curators .curator-board{grid-template-columns:repeat(9,minmax(44px,1fr));gap:clamp(6px,.6vw,12px);min-width:0;padding:12px 4px 20px;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:var(--red) var(--line);overscroll-behavior-x:contain}
+@media(max-width:1050px){.library-curators .curator-board{grid-template-columns:repeat(9,minmax(64px,1fr));gap:10px}}
+.library-curators .curator-work{touch-action:manipulation}
