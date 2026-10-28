@@ -146,3 +146,20 @@ main{overflow:clip}
 @media(max-width:370px){.team{--creator-summary:67.2px}}
 @media(min-width:761px){.library-curators .curator-board{max-width:336px;justify-self:end;padding:24px;gap:14px}}
 @media(min-width:761px) and (max-width:1050px){.library-curators .curator-board{padding:16px;gap:12px}}
+/* Faster drawing and an open curator canvas. */
+.concept{padding-block:36px;gap:0}
+.concept>.section-label,.concept-copy{grid-column:1/-1}
+.concept .concept-title{width:calc((100% - 40px) * .75);margin:32px 0}
+.quote-art{overflow:hidden}
+.concept-copy>.prose-columns{width:calc((100% - 40px) * .75);margin-left:auto}
+.draw-started .quote-finish{animation-delay:4.5s;animation-duration:.25s}
+.creators-disclosure>summary{position:relative;min-height:calc((2 * clamp(70px,8vw,130px) + 19px + var(--creator-summary)) / 12);gap:16px}
+.creators-disclosure>summary::before{content:'';position:absolute;inset:-13px 0}
+.creators-disclosure>summary h2{font-size:clamp(.875rem,1.3vw,1.25rem);line-height:1.1}
+.disclosure-mark{font-size:1rem}
+.library-curators{grid-template-columns:minmax(0,min(54%,720px)) minmax(0,1fr)}
+.library-curators .curator-board{width:100%;max-width:none;justify-self:stretch;padding:0;background:transparent;gap:clamp(16px,2vw,28px)}
+.curator-work{max-width:none}
+.work-outline{opacity:1;filter:brightness(0)}
+@media(max-width:1050px){.concept .concept-title,.concept-copy>.prose-columns{width:100%}}
+@media(max-width:760px){.library-curators{grid-template-columns:1fr}.library-curators .curator-board{gap:18px}}
