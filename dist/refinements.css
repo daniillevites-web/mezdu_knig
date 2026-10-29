@@ -170,3 +170,12 @@ main{overflow:clip}
 .library-curators .curator-board{grid-template-columns:repeat(9,minmax(44px,1fr));gap:clamp(6px,.6vw,12px);min-width:0;padding:12px 4px 20px;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:var(--red) var(--line);overscroll-behavior-x:contain}
 @media(max-width:1050px){.library-curators .curator-board{grid-template-columns:repeat(9,minmax(64px,1fr));gap:10px}}
 .library-curators .curator-work{touch-action:manipulation}
+/* Clearer opening, complete silhouettes and a single motion at the route's end. */
+.hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(32px,5vw,80px)}
+.origin-detail .origin-dates{margin-top:26px;color:var(--red);font-family:var(--font-text);font-size:1.0625rem;font-weight:700}
+.creators-disclosure>summary{min-height:calc((2 * clamp(70px,8vw,130px) + 28px + var(--creator-summary)) / 3)}
+.library-curators .curator-board{grid-template-columns:repeat(9,minmax(0,1fr));gap:clamp(2px,.55vw,10px);padding:12px 8px 20px;overflow:visible;scrollbar-width:none}
+.curator-board::-webkit-scrollbar{display:none}
+.route-animated .outro-dot{transition:none}
+@media(max-width:1050px){.curator-cursor{width:16px;height:20px}}
+@media(max-width:760px){.hero{grid-template-columns:1fr;column-gap:0;row-gap:32px}}

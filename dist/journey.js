@@ -36,6 +36,29 @@
     return {gradient, mask, rect};
   });
   const roadPaths = [path, ...glows];
+  const tail = document.createElementNS(ns, 'path');
+  tail.setAttribute('class', 'ribbon-progress ribbon-tail');
+  const tailGlows = glows.map(p => p.cloneNode());
+  tailGlows.forEach(p => { p.classList.add('ribbon-tail-glow'); svg.append(p); });
+  svg.append(tail);
+  const tailPaths = [tail, ...tailGlows];
+  let tailLength = 0, outroStart = null;
+  function drawEnding(time) {
+    const r = dot.getBoundingClientRect();
+    const inView = r.top + r.height / 2 < innerHeight - 12 && r.bottom > 0;
+    const ready = reduce.matches || (inView && shown >= total - .5);
+    if (!ready) outroStart = null;
+    else if (outroStart === null) outroStart = time;
+    const progress = reduce.matches ? 1 : ready ? Math.min(1, (time - outroStart) / 900) : 0;
+    const eased = progress * progress * (3 - 2 * progress);
+    // Both marks share one clock. The reversed tail draws directly out of the dot.
+    const dotProgress = Math.min(1, progress * 3);
+    dot.style.opacity = String(dotProgress);
+    dot.style.transform = `scale(${.15 + .85 * (1 - Math.pow(1 - dotProgress, 3))})`;
+    tailPaths.forEach(p => { p.style.strokeDashoffset = String(tailLength * (1 - eased)); });
+    outro.classList.toggle('route-arrived', progress === 1);
+    return ready && progress < 1;
+  }
   let samples = [], stops = [], total = 0, shown = 0, frame = 0, layoutFrame = 0, lastTime = 0;
   function lengthAtY(y) {
     if (!samples.length || y <= samples[0].y) return 0;
@@ -73,7 +96,10 @@
       const a = routePoints[i - 1], b = routePoints[i], dy = b.y - a.y;
       d += ` C ${a.x} ${a.y + dy * .48} ${b.x} ${b.y - dy * .48} ${b.x} ${b.y}`;
     }
-    d += ` C ${last.x} ${last.y + (end.y - last.y) * .45} ${end.x} ${end.y - 100} ${end.x} ${end.y}`;
+    const tailD = `M ${end.x} ${end.y} C ${end.x} ${end.y - 100} ${last.x} ${last.y + (end.y - last.y) * .45} ${last.x} ${last.y}`;
+    tailPaths.forEach(p => p.setAttribute('d', tailD));
+    tailLength = tail.getTotalLength();
+    tailPaths.forEach(p => { p.style.strokeDasharray = `${tailLength} ${tailLength}`; });
     const fraction = total ? shown / total : 0;
     roadPaths.forEach(p => p.setAttribute('d', d));
     total = path.getTotalLength(); shown = total * fraction;
@@ -96,8 +122,8 @@
     else shown += (target - shown) * (1 - Math.exp(-dt / 145));
     for (const p of roadPaths) p.style.strokeDashoffset = String(total - shown);
     rows.forEach((row, i) => row.classList.toggle('route-reached', shown >= stops[i] - .3));
-    outro.classList.toggle('route-arrived', shown >= total - .5);
-    if (Math.abs(target - shown) >= .3) scheduleDraw(); else lastTime = 0;
+    const endingInMotion = drawEnding(time);
+    if (Math.abs(target - shown) >= .3 || endingInMotion) scheduleDraw(); else lastTime = 0;
   }
   function scheduleDraw() { if (!frame) frame = requestAnimationFrame(drawRoad); }
   function scheduleLayout() { if (!layoutFrame) layoutFrame = requestAnimationFrame(rebuildRoad); }
